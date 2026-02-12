@@ -24,7 +24,7 @@ namespace bookshopsystem.Forms
         private decimal totalPay = 0;
 
         private int _currentPage = 1;
-        private int _pageSize = 10;
+        private int _pageSize = 12;
         private int _totalBooks;
 
         // ===================== POSForm Constructor =====================

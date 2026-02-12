@@ -38,19 +38,54 @@ namespace bookshopsystem.Forms
 
         }
 
+        //private void LoadReceiptData()
+        //{
+        //    int index = 1;
+        //    foreach (var item in _receipt.Items)
+        //    {
+
+        //        index++;
+        //        var lvi = new ListViewItem(item.Title.Length > 30 ? item.Title.Substring(0, 27) + "..." : item.Title);
+        //        lvi.SubItems.Add(item.Quantity.ToString());
+        //        lvi.SubItems.Add(item.Price.ToString("N2"));
+        //        //lvi.SubItems.Add(item.Subtotal.ToString("N2"));
+        //        lvReceipt.Items.Add(lvi);
+        //    }
+        //}
+
         private void LoadReceiptData()
         {
+            lvReceipt.Items.Clear();
             int index = 1;
+
             foreach (var item in _receipt.Items)
             {
-                var lvi = new ListViewItem(item.Title.Length > 30 ? item.Title.Substring(0, 27) + "..." : item.Title);
+                var lvi = new ListViewItem(index.ToString()); // #
+
+                // Title
+                lvi.SubItems.Add(item.Title.Length > 30
+                    ? item.Title.Substring(0, 27) + "..."
+                    : item.Title);
+
+                // Qty
                 lvi.SubItems.Add(item.Quantity.ToString());
+
+                // Price
                 lvi.SubItems.Add(item.Price.ToString("N2"));
+
+                // Total (Subtotal)
                 lvi.SubItems.Add(item.Subtotal.ToString("N2"));
+
                 lvReceipt.Items.Add(lvi);
+
                 index++;
             }
+
+            // Optional: update receipt total
+            _receipt.Total = _receipt.Items.Sum(x => x.Subtotal);
         }
+
+
 
         //private Label CreateLabel(string text, FontStyle style = FontStyle.Regular, float size = 10)
         //{

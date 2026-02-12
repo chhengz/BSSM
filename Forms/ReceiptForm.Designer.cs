@@ -30,6 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ReceiptForm));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label6 = new System.Windows.Forms.Label();
+            this.receipt_ID = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.lvReceipt = new System.Windows.Forms.ListView();
             this.No = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -38,17 +40,15 @@
             this.Price = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Total = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.panel2 = new System.Windows.Forms.Panel();
-            this.lb_ST = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.receipt_ID = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.lb_TAX = new System.Windows.Forms.Label();
-            this.lb_GKH = new System.Windows.Forms.Label();
             this.lb_GUSD = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.lb_GKH = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.lb_TAX = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.lb_ST = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -63,6 +63,24 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(356, 74);
             this.panel1.TabIndex = 2;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(272, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(84, 13);
+            this.label6.TabIndex = 6;
+            this.label6.Text = "Tell: 099601858";
+            // 
+            // receipt_ID
+            // 
+            this.receipt_ID.AutoSize = true;
+            this.receipt_ID.Location = new System.Drawing.Point(0, 50);
+            this.receipt_ID.Name = "receipt_ID";
+            this.receipt_ID.Size = new System.Drawing.Size(54, 13);
+            this.receipt_ID.TabIndex = 5;
+            this.receipt_ID.Text = "Receipt #";
             // 
             // label1
             // 
@@ -88,11 +106,12 @@
             this.lvReceipt.FullRowSelect = true;
             this.lvReceipt.GridLines = true;
             this.lvReceipt.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+            this.lvReceipt.HideSelection = false;
             this.lvReceipt.LabelWrap = false;
             this.lvReceipt.Location = new System.Drawing.Point(4, 78);
             this.lvReceipt.MultiSelect = false;
             this.lvReceipt.Name = "lvReceipt";
-            this.lvReceipt.Size = new System.Drawing.Size(356, 499);
+            this.lvReceipt.Size = new System.Drawing.Size(356, 436);
             this.lvReceipt.TabIndex = 3;
             this.lvReceipt.UseCompatibleStateImageBehavior = false;
             this.lvReceipt.View = System.Windows.Forms.View.Details;
@@ -105,7 +124,6 @@
             // Title
             // 
             this.Title.Text = "Item";
-            this.Title.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.Title.Width = 150;
             // 
             // Qty
@@ -135,66 +153,20 @@
             this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.lb_ST);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(4, 438);
+            this.panel2.Location = new System.Drawing.Point(4, 375);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(356, 139);
             this.panel2.TabIndex = 4;
             // 
-            // lb_ST
+            // lb_GUSD
             // 
-            this.lb_ST.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lb_ST.AutoSize = true;
-            this.lb_ST.Location = new System.Drawing.Point(311, 10);
-            this.lb_ST.Name = "lb_ST";
-            this.lb_ST.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.lb_ST.Size = new System.Drawing.Size(44, 13);
-            this.lb_ST.TabIndex = 0;
-            this.lb_ST.Text = "subtotal";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(0, 10);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(49, 13);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Subtotal:";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(0, 30);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(57, 13);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Tax (10%):";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(0, 70);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(98, 13);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "Grand Total (KHR):";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(0, 50);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(98, 13);
-            this.label5.TabIndex = 4;
-            this.label5.Text = "Grand Total (USD):";
-            // 
-            // receipt_ID
-            // 
-            this.receipt_ID.AutoSize = true;
-            this.receipt_ID.Location = new System.Drawing.Point(0, 50);
-            this.receipt_ID.Name = "receipt_ID";
-            this.receipt_ID.Size = new System.Drawing.Size(54, 13);
-            this.receipt_ID.TabIndex = 5;
-            this.receipt_ID.Text = "Receipt #";
+            this.lb_GUSD.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lb_GUSD.Location = new System.Drawing.Point(132, 70);
+            this.lb_GUSD.Name = "lb_GUSD";
+            this.lb_GUSD.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.lb_GUSD.Size = new System.Drawing.Size(223, 13);
+            this.lb_GUSD.TabIndex = 8;
+            this.lb_GUSD.Text = "lb_GUSD";
             // 
             // label7
             // 
@@ -205,47 +177,71 @@
             this.label7.TabIndex = 5;
             this.label7.Text = "Thank you! Come again ❤️";
             // 
-            // lb_TAX
+            // label5
             // 
-            this.lb_TAX.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lb_TAX.AutoSize = true;
-            this.lb_TAX.Location = new System.Drawing.Point(334, 30);
-            this.lb_TAX.Name = "lb_TAX";
-            this.lb_TAX.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.lb_TAX.Size = new System.Drawing.Size(21, 13);
-            this.lb_TAX.TabIndex = 6;
-            this.lb_TAX.Text = "tax";
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(0, 50);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(98, 13);
+            this.label5.TabIndex = 4;
+            this.label5.Text = "Grand Total (USD):";
             // 
             // lb_GKH
             // 
             this.lb_GKH.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lb_GKH.AutoSize = true;
-            this.lb_GKH.Location = new System.Drawing.Point(311, 50);
+            this.lb_GKH.Location = new System.Drawing.Point(132, 50);
             this.lb_GKH.Name = "lb_GKH";
             this.lb_GKH.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.lb_GKH.Size = new System.Drawing.Size(44, 13);
+            this.lb_GKH.Size = new System.Drawing.Size(223, 13);
             this.lb_GKH.TabIndex = 7;
             this.lb_GKH.Text = "lb_GKH";
             // 
-            // lb_GUSD
+            // label4
             // 
-            this.lb_GUSD.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lb_GUSD.AutoSize = true;
-            this.lb_GUSD.Location = new System.Drawing.Point(303, 70);
-            this.lb_GUSD.Name = "lb_GUSD";
-            this.lb_GUSD.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.lb_GUSD.Size = new System.Drawing.Size(52, 13);
-            this.lb_GUSD.TabIndex = 8;
-            this.lb_GUSD.Text = "lb_GUSD";
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(0, 70);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(98, 13);
+            this.label4.TabIndex = 3;
+            this.label4.Text = "Grand Total (KHR):";
             // 
-            // label6
+            // lb_TAX
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(272, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(84, 13);
-            this.label6.TabIndex = 6;
-            this.label6.Text = "Tell: 099601858";
+            this.lb_TAX.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lb_TAX.Location = new System.Drawing.Point(132, 30);
+            this.lb_TAX.Name = "lb_TAX";
+            this.lb_TAX.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.lb_TAX.Size = new System.Drawing.Size(223, 13);
+            this.lb_TAX.TabIndex = 6;
+            this.lb_TAX.Text = "tax";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(0, 30);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(57, 13);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "Tax (10%):";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(0, 10);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(49, 13);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Subtotal:";
+            // 
+            // lb_ST
+            // 
+            this.lb_ST.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lb_ST.Location = new System.Drawing.Point(132, 10);
+            this.lb_ST.Name = "lb_ST";
+            this.lb_ST.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.lb_ST.Size = new System.Drawing.Size(223, 13);
+            this.lb_ST.TabIndex = 0;
+            this.lb_ST.Text = "subtotal";
             // 
             // ReceiptForm
             // 
@@ -253,7 +249,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(364, 581);
+            this.ClientSize = new System.Drawing.Size(364, 518);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.lvReceipt);
             this.Controls.Add(this.panel1);
