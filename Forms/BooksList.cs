@@ -17,7 +17,7 @@ namespace bookshopsystem.Forms
         private const string COL_DELETE = "btnDelete";
 
         private int _currentPage = 1;
-        private int _pageSize = 10;
+        private int _pageSize = 20;
         private int _totalBooks;
 
         // ===================== BooksList Constructor =====================
@@ -213,8 +213,8 @@ namespace bookshopsystem.Forms
                 return;
             }
 
-            var staffs = _bookService.SearchBooks(keyword);
-            LoadBooks(staffs);
+            var books = _bookService.SearchBooks(keyword);
+            LoadBooks(books);
         }
 
         // ===================== RELOAD BUTTON =====================

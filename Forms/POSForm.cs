@@ -24,13 +24,17 @@ namespace bookshopsystem.Forms
         private decimal totalPay = 0;
 
         private int _currentPage = 1;
-        private int _pageSize = 10;
+        private int _pageSize = 25; // books to show
         private int _totalBooks;
 
         // ===================== POSForm Constructor =====================
         public POSForm(Staff staff, BookServices bookService)
         {
             InitializeComponent();
+
+            //this.KeyPreview = true;
+            //this.KeyDown += POSForm_KeyDown;
+
             this.SuspendLayout();
             this.WindowState = FormWindowState.Maximized;
             _currentStaff = staff;
@@ -40,6 +44,25 @@ namespace bookshopsystem.Forms
             SetupFlowLayoutPanel();
             this.ResumeLayout();
         }
+
+
+        // ===================== KeyDown Event Handler =====================
+        //private void POSForm_KeyDown(object sender, KeyEventArgs e)
+        //{
+        //    if (e.KeyCode == Keys.Escape)
+        //    {
+        //        if (this.WindowState == FormWindowState.Maximized)
+        //        {
+        //            this.WindowState = FormWindowState.Normal;
+        //            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+        //        }
+        //    }
+        //    else if (e.KeyCode == Keys.F11)
+        //    {
+        //        this.WindowState = FormWindowState.Maximized;
+        //        this.FormBorderStyle = FormBorderStyle.None;
+        //    }
+        //}
 
         // ===================== FORM LOAD =====================
         private void POSForm_Load(object sender, EventArgs e)
@@ -246,9 +269,16 @@ namespace bookshopsystem.Forms
                     orderItems.Values
                 );
 
-                // show qr code
+                // ----------------------------------------------
+                // ------------- SHOW QRPay -------------
                 var qrForm = new QRPayForm(totalPay.ToString());
                 qrForm.ShowDialog(this);
+
+                // ------------- SHOW Receipt -------------
+                var receipt = BuildReceipt(saleId);
+                var receiptForm = new ReceiptForm(receipt);
+                receiptForm.ShowDialog(this);
+                // ----------------------------------------------
 
                 MessageBox.Show(
                     $"Checkout completed!\nSale ID: {saleId}",
@@ -296,11 +326,10 @@ namespace bookshopsystem.Forms
                 );
 
                 // ----------------------------------------------
-                
+                // ------------- SHOW Receipt -------------
                 var receipt = BuildReceipt(saleId);
                 var receiptForm = new ReceiptForm(receipt);
                 receiptForm.ShowDialog(this);
-
                 // ----------------------------------------------
 
                 orderItems.Clear();
@@ -345,21 +374,20 @@ namespace bookshopsystem.Forms
         private void btnSearch_Click(object sender, EventArgs e)
         {
             string keyword = txtSearch.Text.Trim().ToLower();
-
             if (string.IsNullOrEmpty(keyword))
             {
                 LoadBooksIntoCards(_allBooks);
                 return;
             }
 
-            var filteredBooks = _allBooks.Where(b =>
-                b.ISBN.ToLower().Contains(keyword) ||
-                b.Title.ToLower().Contains(keyword) ||
-                b.Author.ToLower().Contains(keyword)
-            ).ToList();
+            //var filteredBooks = _allBooks.Where(b =>
+            //    b.ISBN.ToLower().Contains(keyword) ||
+            //    b.Title.ToLower().Contains(keyword) ||
+            //    b.Author.ToLower().Contains(keyword)
+            //).ToList();
 
+            var filteredBooks = _bookService.SearchBooks(keyword);
             LoadBooksIntoCards(filteredBooks);
-
         }
 
         // ===================== CLOCK =====================

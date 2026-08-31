@@ -25,6 +25,10 @@ namespace bookshopsystem.Forms
         public DashboardForm(Staff staff)
         {
             InitializeComponent();
+
+            //this.KeyPreview = true;
+            //this.KeyDown += DashboardForm_KeyDown;
+
             this.SuspendLayout();
             this.Text = "Book Shop | Dashboard";
             this.WindowState = FormWindowState.Maximized;
@@ -36,6 +40,24 @@ namespace bookshopsystem.Forms
             StartClock();
             this.ResumeLayout();
         }
+
+        // ===================== KeyDown Event Handler =====================
+        //private void DashboardForm_KeyDown(object sender, KeyEventArgs e)
+        //{
+        //    if (e.KeyCode == Keys.Escape)
+        //    {
+        //        if (this.WindowState == FormWindowState.Maximized)
+        //        {
+        //            this.FormBorderStyle = FormBorderStyle.FixedSingle; 
+        //            this.WindowState = FormWindowState.Normal;
+        //        }
+        //    }
+        //    else if (e.KeyCode == Keys.F11)
+        //    {
+        //        this.FormBorderStyle = FormBorderStyle.None;
+        //        this.WindowState = FormWindowState.Maximized;
+        //    }
+        //}
 
         // ===================== StartClock =====================
         private void StartClock()
