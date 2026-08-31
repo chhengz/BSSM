@@ -49,8 +49,12 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.lb_ST = new System.Windows.Forms.Label();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.btnPrintPDF = new System.Windows.Forms.Button();
+            this.btnPrintReceipt = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -67,16 +71,17 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(272, 0);
+            this.label6.Location = new System.Drawing.Point(77, 24);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(84, 13);
+            this.label6.Size = new System.Drawing.Size(203, 26);
             this.label6.TabIndex = 6;
-            this.label6.Text = "Tell: 099601858";
+            this.label6.Text = "By SLS - Royal University of Phnom Penh\r\nTell: 099601858";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // receipt_ID
             // 
             this.receipt_ID.AutoSize = true;
-            this.receipt_ID.Location = new System.Drawing.Point(0, 50);
+            this.receipt_ID.Location = new System.Drawing.Point(0, 56);
             this.receipt_ID.Name = "receipt_ID";
             this.receipt_ID.Size = new System.Drawing.Size(54, 13);
             this.receipt_ID.TabIndex = 5;
@@ -85,10 +90,10 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(128, 7);
+            this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(120, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(100, 21);
+            this.label1.Size = new System.Drawing.Size(117, 25);
             this.label1.TabIndex = 0;
             this.label1.Text = "BOOK SHOP";
             // 
@@ -111,7 +116,7 @@
             this.lvReceipt.Location = new System.Drawing.Point(4, 78);
             this.lvReceipt.MultiSelect = false;
             this.lvReceipt.Name = "lvReceipt";
-            this.lvReceipt.Size = new System.Drawing.Size(356, 436);
+            this.lvReceipt.Size = new System.Drawing.Size(356, 396);
             this.lvReceipt.TabIndex = 3;
             this.lvReceipt.UseCompatibleStateImageBehavior = false;
             this.lvReceipt.View = System.Windows.Forms.View.Details;
@@ -153,7 +158,7 @@
             this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.lb_ST);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(4, 375);
+            this.panel2.Location = new System.Drawing.Point(4, 335);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(356, 139);
             this.panel2.TabIndex = 4;
@@ -175,7 +180,7 @@
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(135, 13);
             this.label7.TabIndex = 5;
-            this.label7.Text = "Thank you! Come again ❤️";
+            this.label7.Text = "Thank you! Come again ❤";
             // 
             // label5
             // 
@@ -243,6 +248,38 @@
             this.lb_ST.TabIndex = 0;
             this.lb_ST.Text = "subtotal";
             // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.btnPrintReceipt);
+            this.panel3.Controls.Add(this.btnPrintPDF);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel3.Location = new System.Drawing.Point(4, 474);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(356, 40);
+            this.panel3.TabIndex = 5;
+            // 
+            // btnPrintPDF
+            // 
+            this.btnPrintPDF.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPrintPDF.Location = new System.Drawing.Point(3, 4);
+            this.btnPrintPDF.Name = "btnPrintPDF";
+            this.btnPrintPDF.Size = new System.Drawing.Size(160, 32);
+            this.btnPrintPDF.TabIndex = 0;
+            this.btnPrintPDF.Text = "Save as PDF";
+            this.btnPrintPDF.UseVisualStyleBackColor = true;
+            this.btnPrintPDF.Click += new System.EventHandler(this.btnPrintPDF_Click);
+            // 
+            // btnPrintReceipt
+            // 
+            this.btnPrintReceipt.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPrintReceipt.Location = new System.Drawing.Point(192, 4);
+            this.btnPrintReceipt.Name = "btnPrintReceipt";
+            this.btnPrintReceipt.Size = new System.Drawing.Size(160, 32);
+            this.btnPrintReceipt.TabIndex = 1;
+            this.btnPrintReceipt.Text = "Print Receipt";
+            this.btnPrintReceipt.UseVisualStyleBackColor = true;
+            this.btnPrintReceipt.Click += new System.EventHandler(this.btnPrintReceipt_Click);
+            // 
             // ReceiptForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -253,6 +290,7 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.lvReceipt);
             this.Controls.Add(this.panel1);
+            this.Controls.Add(this.panel3);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -265,6 +303,7 @@
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            this.panel3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -290,5 +329,8 @@
         private System.Windows.Forms.Label lb_GUSD;
         private System.Windows.Forms.Label lb_GKH;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Button btnPrintReceipt;
+        private System.Windows.Forms.Button btnPrintPDF;
     }
 }

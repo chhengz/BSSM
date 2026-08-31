@@ -1,4 +1,5 @@
 ﻿using bookshopsystem.Forms;
+using bookshopsystem.Forms.tests;
 using bookshopsystem.Models;
 using bookshopsystem.Services;
 using System;
@@ -25,8 +26,7 @@ namespace bookshopsystem
             //Application.Run(new StaffsList());
             //Application.Run(new BooksList());
             //Application.Run(new MainForm());
-
-            //Application.Run(new ReportsForm());
+            //Application.Run(new TEST_DashboardForm());
         }
     }
 }

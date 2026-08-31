@@ -133,6 +133,7 @@ namespace bookshopsystem.Forms
         private void btnClear_Click(object sender, EventArgs e)
         {
             cbType.SelectedIndex = -1;
+            cbType.Text = "Select Type";
             dgvReports.DataSource = null;
             dtpDate.Value = DateTime.Today;
         }

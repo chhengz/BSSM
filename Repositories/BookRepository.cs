@@ -3,6 +3,7 @@ using bookshopsystem.Data;
 using bookshopsystem.Models;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Runtime.Remoting.Contexts;
@@ -17,7 +18,7 @@ namespace bookshopsystem.Repositories
         {
             List<Book> books = new List<Book>();
 
-            string sql = "SELECT * FROM Books";
+            string sql = "SELECT * FROM Books WHERE IsActive = 1";
 
             SqlCommand cmd = new SqlCommand(sql, Connection);
             Connection.Open();
@@ -86,9 +87,11 @@ namespace bookshopsystem.Repositories
             List<Book> books = new List<Book>();
 
             string sql = @"SELECT * FROM Books
-                   ORDER BY BookId
-                   OFFSET @offset ROWS
-                   FETCH NEXT @pageSize ROWS ONLY";
+               WHERE IsActive = 1
+               ORDER BY BookId
+               OFFSET @offset ROWS
+               FETCH NEXT @pageSize ROWS ONLY";
+
 
             SqlCommand cmd = new SqlCommand(sql, Connection);
             cmd.Parameters.AddWithValue("@offset", (page - 1) * pageSize);
@@ -123,7 +126,7 @@ namespace bookshopsystem.Repositories
 
         public int GetTotalCount()
         {
-            string sql = "SELECT COUNT(*) FROM Books";
+            string sql = "SELECT COUNT(*) FROM Books WHERE IsActive = 1";
 
             SqlCommand cmd = new SqlCommand(sql, Connection);
 
@@ -135,42 +138,86 @@ namespace bookshopsystem.Repositories
         }
 
 
+        //public List<Book> Search(string keyword)
+        //{
+        //    List<Book> books = new List<Book>();
+
+        //    string sql = @"SELECT * FROM Books
+        //       WHERE (Title LIKE @kw
+        //       OR Author LIKE @kw
+        //       OR ISBN LIKE @kw)
+        //       AND IsActive = 1";
+
+        //    SqlCommand cmd = new SqlCommand(sql, Connection);
+        //    cmd.Parameters.AddWithValue("@kw", "%" + keyword + "%");
+
+        //    Connection.Open();
+        //    SqlDataReader reader = cmd.ExecuteReader();
+
+        //    while (reader.Read())
+        //    {
+        //        books.Add(new Book
+        //        {
+        //            BookId = (int)reader["BookId"],
+        //            Title = reader["Title"].ToString(),
+        //            Author = reader["Author"].ToString(),
+        //            ISBN = reader["ISBN"].ToString(),
+        //            Price = (decimal)reader["Price"],
+        //            Stock = (int)reader["Stock"],
+        //            CoverImage = reader["CoverImage"] == DBNull.Value
+        //                        ? null
+        //                        : reader["CoverImage"].ToString()
+        //        });
+        //    }
+
+        //    reader.Close();
+        //    Connection.Close();
+
+        //    return books;
+        //}
+
+
         public List<Book> Search(string keyword)
         {
             List<Book> books = new List<Book>();
 
             string sql = @"SELECT * FROM Books
-                   WHERE Title LIKE @kw
+                   WHERE (Title LIKE @kw
                    OR Author LIKE @kw
-                   OR ISBN LIKE @kw";
+                   OR ISBN LIKE @kw)
+                   AND IsActive = 1";
 
-            SqlCommand cmd = new SqlCommand(sql, Connection);
-            cmd.Parameters.AddWithValue("@kw", "%" + keyword + "%");
-
-            Connection.Open();
-            SqlDataReader reader = cmd.ExecuteReader();
-
-            while (reader.Read())
+            using (SqlCommand cmd = new SqlCommand(sql, Connection))
             {
-                books.Add(new Book
-                {
-                    BookId = (int)reader["BookId"],
-                    Title = reader["Title"].ToString(),
-                    Author = reader["Author"].ToString(),
-                    ISBN = reader["ISBN"].ToString(),
-                    Price = (decimal)reader["Price"],
-                    Stock = (int)reader["Stock"],
-                    CoverImage = reader["CoverImage"] == DBNull.Value
-                                ? null
-                                : reader["CoverImage"].ToString()
-                });
-            }
+                cmd.Parameters.Add("@kw", SqlDbType.NVarChar).Value = "%" + keyword + "%";
 
-            reader.Close();
-            Connection.Close();
+                Connection.Open();
+
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        books.Add(new Book
+                        {
+                            BookId = (int)reader["BookId"],
+                            Title = reader["Title"].ToString(),
+                            Author = reader["Author"].ToString(),
+                            ISBN = reader["ISBN"].ToString(),
+                            Price = (decimal)reader["Price"],
+                            Stock = (int)reader["Stock"],
+                            CoverImage = reader["CoverImage"] == DBNull.Value
+                                        ? null
+                                        : reader["CoverImage"].ToString()
+                        });
+                    }
+                }
+
+                Connection.Close();
+            }
 
             return books;
         }
+
 
 
 
@@ -224,7 +271,9 @@ namespace bookshopsystem.Repositories
 
         public void Delete(int id)
         {
-            string sql = "DELETE FROM Books WHERE BookId=@id";
+            //string sql = "DELETE FROM Books WHERE BookId=@id";
+            string sql = "UPDATE Books SET IsActive = 0 WHERE BookId=@id"; // Soft delete
+
             SqlCommand cmd = new SqlCommand(sql, Connection);
             cmd.Parameters.AddWithValue("@id", id);
 

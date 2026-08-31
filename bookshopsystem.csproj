@@ -249,6 +249,12 @@
     <Compile Include="Forms\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\tests\TEST_DashboardForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\tests\TEST_DashboardForm.Designer.cs">
+      <DependentUpon>TEST_DashboardForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\tests\TEST__ReceiptForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -318,6 +324,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\StaffsList.resx">
       <DependentUpon>StaffsList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\tests\TEST_DashboardForm.resx">
+      <DependentUpon>TEST_DashboardForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\tests\TEST__ReceiptForm.resx">
       <DependentUpon>TEST__ReceiptForm.cs</DependentUpon>
